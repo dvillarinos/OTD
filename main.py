@@ -54,6 +54,7 @@ def main():
 
     res_list = []
 
+    """
     # Resolver instancias con el metodo actual y los parametros por defecto
     for instance_file in instances:
         instance_path = f"Instances/{instance_file}.json"
@@ -61,9 +62,23 @@ def main():
 
         probe = MA.prob_metodo_actual(currentInstance)
         SLV.apply_params(probe, params_default)
-        res = SLV.solve(probe,mipgap=0.005,log_file=)
+        res = SLV.solve(probe,mipgap=0.005,log_file=f"Logs/{instance_file}_actualMethod_noMethodSettings.log")
         res["instance"] = instance_file
         res["method"] = "Actual"
+        res["settings"] = "-"
+        res_list.append(res)
+    """
+
+    # Resolver instancias con el metodo nuevo y los parametros por defecto
+    for instance_file in instances:
+        instance_path = f"Instances/{instance_file}.json"
+        currentInstance = ID.InstanceData(instance_path)
+
+        probe = MN.prob_metodo_nuevo(currentInstance)
+        SLV.apply_params(probe, params_default)
+        res = SLV.solve(probe,mipgap=0.005,log_file=f"Logs/{instance_file}_newMethod_noMethodSettings.log")
+        res["instance"] = instance_file
+        res["method"] = "Nuevo"
         res["settings"] = "-"
         res_list.append(res)
 
