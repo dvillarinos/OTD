@@ -1,6 +1,7 @@
 # ---- Librerías ----
 import random
 import json
+from re import S
 import numpy as np
 
 
@@ -10,41 +11,30 @@ import numpy as np
 def test_instances():
     path = "Instances/"
 
-    # Instancia Pequeña (25 nodos)
-    file_name = path + "small_instance.json"
-    newInstance(file_name,
-                N=25,
-                rango_distancia=(1, 50),
-                rango_tarifa=(1, 2),
-                seed=10
-                )
+    TestCases = [
+                ["small_instance",25,(1, 50),(1, 5)],
+                ["medium_instance",50,(1, 50),(1, 5)],
+                ["large_instance",75,(1, 75),(1, 7)],
+                ["extralarge_instance",100,(1, 75),(1, 7)],
+                ["longDistances_instance",60,(1, 200),(1, 10)],
+                ]
     
-    # Instancia Mediana (50 nodos)
-    file_name = path + "medium_instance.json"
-    newInstance(file_name,
-                N=12,
-                rango_distancia=(1, 75),
-                rango_tarifa=(1, 3),
-                seed=25
-                )
+    SEED = 12
+    instaces = []
+    for instace, N, rango_distancia, rango_tarifa in TestCases:
+        instaces.append(instace)
+        file_name = path + f"{instace}.json"
+        newInstance(file_name,
+                    N=N,
+                    rango_distancia=rango_distancia,
+                    rango_tarifa=rango_tarifa,
+                    seed=SEED
+                    )
+        SEED += 13  # Cambiar semilla para la siguiente instancia
     
-    # Instancia Mediana con mayores distancias (50 nodos)
-    file_name = path + "medium_instance_large_dist.json"
-    newInstance(file_name,
-                N=50,
-                rango_distancia=(1, 125),
-                rango_tarifa=(1, 4),
-                seed=14
-                )
-    
-    # Instancia Grande (75 nodos)
-    file_name = path + "large_instance.json"
-    newInstance(file_name,
-                N=75,
-                rango_distancia=(1, 125),
-                rango_tarifa=(1, 5),
-                seed=27
-                )
+    return instaces
+   
+
 # ----------------------------------------------- #
 ### Función para generar la instancia de prueba ###
 # ----------------------------------------------- #
