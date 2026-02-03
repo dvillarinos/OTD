@@ -14,36 +14,36 @@ def test_instances():
     file_name = path + "small_instance.json"
     newInstance(file_name,
                 N=25,
-                rango_distancia=(1, 40),
+                rango_distancia=(1, 50),
                 rango_tarifa=(1, 2),
-                seed=62
+                seed=10
                 )
     
     # Instancia Mediana (50 nodos)
     file_name = path + "medium_instance.json"
     newInstance(file_name,
-                N=50,
-                rango_distancia=(1, 50),
+                N=12,
+                rango_distancia=(1, 75),
                 rango_tarifa=(1, 3),
-                seed=62
+                seed=25
                 )
     
     # Instancia Mediana con mayores distancias (50 nodos)
     file_name = path + "medium_instance_large_dist.json"
     newInstance(file_name,
                 N=50,
-                rango_distancia=(1, 100),
+                rango_distancia=(1, 125),
                 rango_tarifa=(1, 4),
-                seed=62
+                seed=14
                 )
     
-    # Instancia Grande (100 nodos)
+    # Instancia Grande (75 nodos)
     file_name = path + "large_instance.json"
     newInstance(file_name,
                 N=75,
                 rango_distancia=(1, 125),
-                rango_tarifa=(1, 4),
-                seed=62
+                rango_tarifa=(1, 5),
+                seed=27
                 )
 # ----------------------------------------------- #
 ### Función para generar la instancia de prueba ###
