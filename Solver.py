@@ -18,6 +18,7 @@ def solve(prob, mipgap=5e-3, log_file=None):
         prob.set_warning_stream(log)
         prob.set_error_stream(log)
 
+    prob.parameters.timelimit.set(3600)
     prob.parameters.mip.tolerances.mipgap.set(mipgap)
 
     # 2. Solución

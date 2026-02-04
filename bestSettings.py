@@ -1,4 +1,5 @@
 #---- Librerias ----#
+import multiprocessing as mp
 import pandas as pd
 import re
 import cplex
@@ -39,6 +40,7 @@ def search_best_params(instance_file):
             # ======================================================
             # CONSERVADORAS
             # ======================================================
+
             "ns0_hf0_cuts0_ps0_conservadora": {
                 "threads": 1,
                 "mip.strategy.nodeselect": 0,
@@ -48,7 +50,6 @@ def search_best_params(instance_file):
                 "mip.cuts.mircut": 0,
                 "preprocessing.presolve": 0,
             },
-
             "ns0_hf0_cuts0_ps1_conservadora_ps": {
                 "threads": 1,
                 "mip.strategy.nodeselect": 0,
@@ -156,21 +157,34 @@ def search_best_params(instance_file):
         }
     
     settings_res = []
+    
+    tasks = [
+    (param_set, param_values, instance_file,settings_res)
+    for param_set, param_values in params.items()
+    ]
 
-    for param_set, param_values in params.items():
-        LOG_FILE = f'Logs/CPLEX_Settings/NewMethod_{param_set}.log'
-        currentInstance = ID.InstanceData(f"instances/{instance_file}")
+    n_cores = mp.cpu_count()
 
-        probe = MN.prob_metodo_nuevo(currentInstance)
-        SLV.apply_params(probe, param_values)
-        res = SLV.solve(probe, log_file=LOG_FILE)
-        res["instance"] = instance_file
-        res["method"] = "Nuevo"
-        res["settings"] = param_set
-        settings_res.append(res)
+    with mp.Pool(processes=n_cores) as pool:
+        settings_res = pool.map(process, tasks)
 
     df = pd.DataFrame(settings_res)
     df.to_csv("Results/settings_results.csv", index=False)
     RS.make_tables(df)
+
+    return None
+
+def process(args):
+    param_set,param_values,instance_file,settings_res = args
+    LOG_FILE = f'logs/CPLEX_Settings/NewMethod_{param_set}.log'
+    currentInstance = ID.InstanceData(f"instances/{instance_file}.json")
+
+    probe = MN.prob_metodo_nuevo(currentInstance)
+    SLV.apply_params(probe, param_values)
+    res = SLV.solve(probe, log_file=LOG_FILE)
+    res["instance"] = instance_file
+    res["method"] = "Nuevo"
+    res["settings"] = param_set
+    settings_res.append(res)
 
     return None

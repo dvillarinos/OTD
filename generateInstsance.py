@@ -9,7 +9,7 @@ import numpy as np
 ############# Instancias de Prueba ################
 # ----------------------------------------------- #
 def test_instances():
-    path = "Instances/"
+    path = "instances/"
 
     TestCases = [
                 ["small_instance",25,(1, 50),(1, 5)],
