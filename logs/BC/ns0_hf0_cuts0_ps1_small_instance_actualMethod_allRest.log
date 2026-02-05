@@ -1,0 +1,50 @@
+Version identifier: 22.1.1.0 | 2022-11-28 | 9160aff4d
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_NodeSelect                 0
+CPXPARAM_TimeLimit                               60
+Legacy callback                                  LD
+Warning: Control callbacks may disable some MIP features.
+Lazy constraint(s) or lazy constraint/branch callback is present.
+    Disabling dual reductions (CPX_PARAM_REDUCE) in presolve.
+    Disabling presolve reductions that prevent crushing forms (CPX_PARAM_PREREFORM).
+         Disabling repeat represolve because of lazy constraint/incumbent callback.
+Tried aggregator 1 time.
+Reduced MIP has 50 rows, 600 columns, and 1200 nonzeros.
+Reduced MIP has 600 binaries, 0 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.39 ticks)
+Probing time = 0.00 sec. (1.35 ticks)
+Clique table members: 50.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: traditional branch-and-cut.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.31 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap         Variable B NodeID Parent  Depth
+
+      0     0      255.5000    22                    248.0000       22         
+      0     0      257.0000    20                 ZeroHalf: 3       25         
+      0     0      259.7500    38                 ZeroHalf: 1       26         
+      0     0      259.7500    41                 ZeroHalf: 2       27         
+      0     0      260.0000    31                 ZeroHalf: 5       30         
+      0     0      260.0000    37                 ZeroHalf: 3       32         
+      0     0      260.3333    28                 ZeroHalf: 2       36         
+      0     0      260.6000    45                 ZeroHalf: 2       39         
+      0     2      263.3500    50                    263.8000       39                                 0             0
+Elapsed time = 0.07 sec. (52.28 ticks, tree = 0.01 MB, solutions = 0)
+*    10     8      integral     0      342.0000      266.6667       79   22.03%
+*    29     6      integral     0      341.0000      266.6667      145   21.80%
+*    45     5      integral     0      316.0000      266.6667      219   15.61%
+*    47     4      integral     0      306.0000      266.6667      242   12.85%
+*    49     3      integral     0      305.0000      266.6667      259   12.57%
+*    51     2      integral     0      290.0000      268.5000      302    7.41%
+
+Zero-half cuts applied:  6
+User cuts applied:  77
+
+Root node processing (before b&c):
+  Real time             =    0.07 sec. (52.30 ticks)
+Sequential b&c:
+  Real time             =    0.05 sec. (43.74 ticks)
+                          ------------
+Total (root+branch&cut) =    0.12 sec. (96.04 ticks)

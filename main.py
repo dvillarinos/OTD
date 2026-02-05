@@ -18,27 +18,17 @@ import results as RS
 # ----------------------------------------------- #
 
 def main():
-    # Generar instancias de prueba
-    
+
+    print("Starting process...")
+
+    print("Generating instances...")
     instances = GI.test_instances()
 
-    params_compare = BS.search_best_params("medium_instance")
-    
-    """
-    params_default = {
-        "threads": 0,
-        "preprocessing.presolve": 1,
-        "mip.cuts.mircut": 1,
-        "mip.cuts.gomory": 1,
-        "mip.cuts.flowcovers": 1,
-        "mip.cuts.implied": 1,
-        "mip.strategy.heuristicfreq": 10,
-        "mip.strategy.search": (cplex.Cplex().parameters.mip.strategy.search.values.traditional),
-        "mip.strategy.nodeselect": 1,
-        "mip.strategy.variableselect": 3
-    }
+    print("Getting best parameters for both methods...")
+    bestParams_new, bestParams_current = BS.search_best_params("medium_instance")
 
-    res_list = BC.process_BC(params_default,instances)
-    """
+    print("Solving instances with both methods and best parameters...")
+    res_list = BC.process_BC(bestParams_new, bestParams_current,instances)
+
 if __name__ == "__main__":
     main()

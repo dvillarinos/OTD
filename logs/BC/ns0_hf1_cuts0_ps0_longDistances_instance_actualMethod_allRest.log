@@ -1,0 +1,75 @@
+Version identifier: 22.1.1.0 | 2022-11-28 | 9160aff4d
+CPXPARAM_Preprocessing_Presolve                  0
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_NodeSelect                 0
+CPXPARAM_MIP_Strategy_HeuristicFreq              1
+CPXPARAM_TimeLimit                               265
+Legacy callback                                  LD
+Warning: Control callbacks may disable some MIP features.
+Lazy constraint(s) or lazy constraint/branch callback is present.
+    Disabling dual reductions (CPX_PARAM_REDUCE) in presolve.
+    Disabling presolve reductions that prevent crushing forms (CPX_PARAM_PREREFORM).
+Clique table members: 120.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: traditional branch-and-cut.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (1.14 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap         Variable B NodeID Parent  Depth
+
+      0     0     1555.5000    24                   1530.0000       56         
+      0     0     1558.3333    29                 ZeroHalf: 1       59         
+      0     2     1560.2500    33                   1561.0000       59                                 0             0
+Elapsed time = 0.26 sec. (173.17 ticks, tree = 0.01 MB, solutions = 0)
+      9    11     1656.2000    32                   1561.0000      101                  x_33_27 U      9      8      9
+     17    19     1768.0000    10                   1561.0000      134                   x_3_22 U     17     16     17
+     21    23     1949.0000    27                   1561.0000      146                  x_52_44 D     21     20     21
+     27    29     2127.5000    16                   1561.0000      172                  x_31_25 U     27     26     27
+     31    33     2264.8000    41                   1561.0000      191                  x_40_57 U     31     30     31
+*    34+   34                         4178.0000     1561.0000            62.64%
+*    35+   35                         3212.0000     1561.0000            51.40%
+     37    39     2447.0000    22     3212.0000     1561.0000      207   51.40%         x_32_37 D     37     36     37
+*    40+   40                         2591.0000     1561.0000            39.75%
+*    46+   41                         2549.0000     1561.0000            38.76%
+     51    43     2514.0000    40     2549.0000     1561.0000      270   38.76%         x_49_24 U     51     50     43
+*    52    42      integral     0     2516.0000     1561.0000      271   37.96%
+*    53+   40                         2502.0000     1561.0000            37.61%
+*    54+   40                         2501.0000     1561.0000            37.58%
+*    57    42      integral     0     2500.0000     1561.0000      285   37.56%
+*    70    35      integral     0     2442.0000     1561.0000      376   36.08%
+     73    34     2351.0000    22     2442.0000     1561.0000      421   36.08%         x_18_14 D     73     32     33
+     92    31     2455.0000    26     2442.0000     1561.0000      568   36.08%         x_53_40 D     92     31     32
+*    97+   33                         2417.0000     1561.0000            35.42%
+*    99+   31                         2370.0000     1561.0000            34.14%
+*   133    29      integral     0     2369.0000     1561.0000      815   34.11%
+*   139    28      integral     0     2341.0000     1561.0000      865   33.32%
+*   140    26      integral     0     2337.0000     1561.0000      882   33.20%
+*   142    24      integral     0     2281.0000     1561.0000      959   31.57%
+*   147    23      integral     0     2254.0000     1561.0000     1048   30.75%
+*   150    20      integral     0     2172.0000     1561.0000     1119   28.13%
+    175    19     2154.7500    40     2172.0000     1561.0000     1379   28.13%         x_14_58 U    175    158     19
+Elapsed time = 2.58 sec. (3531.11 ticks, tree = 0.06 MB, solutions = 17)
+*   187    18      integral     0     2137.0000     1561.0000     1513   26.95%
+    278    20    infeasible           2137.0000     1561.0000     2318   26.95%         x_54_47 U    278    274     26
+    384    18     2079.5000    49     2137.0000     1561.0000     3203   26.95%          x_9_49 U    384    364     18
+*   422    18      integral     0     2136.0000     1561.0000     3457   26.92%
+*   436+   14                         2089.0000     1561.0000            25.28%
+*   454    10      integral     0     2068.0000     1561.0000     3858   24.52%
+*   493     9      integral     0     2066.0000     1561.0000     4221   24.44%
+    504    11     2056.8000    88     2066.0000     1561.0000     4385   24.44%         x_10_29 D    504    502     11
+*   547    11      integral     0     2059.0000     1561.0000     4717   24.19%
+*   556+    8                         2050.0000     1561.0000            23.85%
+*   604+    4                         2036.0000     1561.0000            23.33%
+    631     1        cutoff           2036.0000     1561.0000     5650   23.33%         x_56_36 U    631      1      2
+*   633+    1                         2015.0000     2010.0000             0.25%
+
+Zero-half cuts applied:  1
+User cuts applied:  440
+
+Root node processing (before b&c):
+  Real time             =    0.26 sec. (173.76 ticks)
+Sequential b&c:
+  Real time             =    3.68 sec. (7261.94 ticks)
+                          ------------
+Total (root+branch&cut) =    3.94 sec. (7435.69 ticks)

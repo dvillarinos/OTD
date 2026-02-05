@@ -9,7 +9,7 @@ def apply_params(prob, params):
     for k, v in params.items():
         eval(f"prob.parameters.{k}.set({repr(v)})")
 
-def solve(prob, mipgap=5e-3, log_file=None):
+def solve(prob, mipgap=1e-6, log_file=None):
     # 1. Configuración de CPLEX
     if log_file is not None:
         log = open(log_file, "w")
@@ -18,7 +18,6 @@ def solve(prob, mipgap=5e-3, log_file=None):
         prob.set_warning_stream(log)
         prob.set_error_stream(log)
 
-    prob.parameters.timelimit.set(3600)
     prob.parameters.mip.tolerances.mipgap.set(mipgap)
 
     # 2. Solución
@@ -31,8 +30,8 @@ def solve(prob, mipgap=5e-3, log_file=None):
     
     # 3. Extracción de resultados
     status = prob.solution.get_status_string(prob.solution.get_status())
-    
-											 
+
+    gap = None											 
     obj = None
     active_vars = {}
 
@@ -40,7 +39,12 @@ def solve(prob, mipgap=5e-3, log_file=None):
     if prob.solution.is_primal_feasible():
 												  
         obj = prob.solution.get_objective_value()
-		
+
+        try:
+            gap = prob.solution.MIP.get_mip_relative_gap()
+        except:
+            gap = None
+                
 															  
         vals = dict(zip(prob.variables.get_names(), prob.solution.get_values()))
         
@@ -53,6 +57,7 @@ def solve(prob, mipgap=5e-3, log_file=None):
     # 5. Retorno del diccionario de resultados
     return {
         "status": status,
+        "gap": gap,
         "time_s": round(t1 - t0, 3),
         "objective_value": obj,
         "active_vars": active_vars

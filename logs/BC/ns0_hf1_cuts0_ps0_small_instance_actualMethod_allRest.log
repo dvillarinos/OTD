@@ -1,0 +1,56 @@
+Version identifier: 22.1.1.0 | 2022-11-28 | 9160aff4d
+CPXPARAM_Preprocessing_Presolve                  0
+CPXPARAM_Read_DataCheck                          1
+CPXPARAM_MIP_Strategy_NodeSelect                 0
+CPXPARAM_MIP_Strategy_HeuristicFreq              1
+CPXPARAM_TimeLimit                               60
+Legacy callback                                  LD
+Warning: Control callbacks may disable some MIP features.
+Lazy constraint(s) or lazy constraint/branch callback is present.
+    Disabling dual reductions (CPX_PARAM_REDUCE) in presolve.
+    Disabling presolve reductions that prevent crushing forms (CPX_PARAM_PREREFORM).
+Clique table members: 50.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: traditional branch-and-cut.
+Parallel mode: none, using 1 thread.
+Root relaxation solution time = 0.00 sec. (0.18 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap         Variable B NodeID Parent  Depth
+
+      0     0      255.5000    22                    248.0000       22         
+      0     0      257.0000    20                 ZeroHalf: 3       25         
+      0     0      259.7500    38                 ZeroHalf: 1       26         
+      0     0      259.7500    41                 ZeroHalf: 2       27         
+      0     0      260.0000    31                 ZeroHalf: 5       30         
+      0     0      260.0000    37                 ZeroHalf: 3       32         
+      0     0      260.3333    28                 ZeroHalf: 2       36         
+      0     0      260.6000    45                 ZeroHalf: 2       39         
+      0     2      263.3500    50                    263.8000       39                                 0             0
+Elapsed time = 0.06 sec. (50.20 ticks, tree = 0.01 MB, solutions = 0)
+*     9+    9                          557.0000      266.6667            52.12%
+*    11+   11                          404.0000      266.6667            33.99%
+*    15    13      integral     0      397.0000      266.6667       87   32.83%
+*    17    12      integral     0      394.0000      266.6667       91   32.32%
+*    30    11      integral     0      388.0000      266.6667      133   31.27%
+*    32+   11                          387.0000      266.6667            31.09%
+*    36+   10                          379.0000      266.6667            29.64%
+*    46+   12                          372.0000      266.6667            28.32%
+*    50+   12                          358.0000      266.6667            25.51%
+*    55     7      integral     0      342.0000      266.6667      215   22.03%
+*    57     5      integral     0      341.0000      266.6667      244   21.80%
+*    58     4      integral     0      316.0000      266.6667      256   15.61%
+*    60     4      integral     0      306.0000      266.6667      271   12.85%
+*    63     2      integral     0      305.0000      266.6667      287   12.57%
+*    77     4      integral     0      302.0000      268.5000      385   11.09%
+*    81     2      integral     0      290.0000      268.5000      412    7.41%
+
+Zero-half cuts applied:  6
+User cuts applied:  104
+
+Root node processing (before b&c):
+  Real time             =    0.06 sec. (50.25 ticks)
+Sequential b&c:
+  Real time             =    0.12 sec. (129.65 ticks)
+                          ------------
+Total (root+branch&cut) =    0.18 sec. (179.90 ticks)
